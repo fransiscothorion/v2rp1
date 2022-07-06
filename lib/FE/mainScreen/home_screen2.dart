@@ -11,6 +11,7 @@ import 'package:v2rp1/FE/MU/scan_mu.dart';
 import 'package:v2rp1/FE/SM/stock_movement.dart';
 import 'package:v2rp1/FE/SO/stock_opname.dart';
 import 'package:v2rp1/FE/ST/stock_transfer.dart';
+import 'package:v2rp1/FE/StockTable/stocktable.dart';
 import 'package:v2rp1/FE/VB/vendor_barcode.dart';
 
 // ignore: must_be_immutable
@@ -290,7 +291,7 @@ class HomeScreenn extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 12),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -320,6 +321,36 @@ class HomeScreenn extends StatelessWidget {
                                   ),
                                   Text('Barcode'),
                                   Text('Registration'),
+                                ],
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Material(
+                                    borderRadius: BorderRadius.circular(20),
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    child: Ink.image(
+                                      image:
+                                          AssetImage('images/kctgroupasli.png'),
+                                      height: 80,
+                                      width: 80,
+                                      fit: BoxFit.fill,
+                                      child: InkWell(
+                                        splashColor: Colors.black38,
+                                        onTap: () async {
+                                          Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  StockTable(),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Text('Stock'),
+                                  Text('Table'),
                                 ],
                               ),
                             ],
