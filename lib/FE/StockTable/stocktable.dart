@@ -180,7 +180,7 @@ class _StockTableState extends State<StockTable> {
                     ListView.builder(
                       shrinkWrap: true,
                       // itemCount: _dataaa == null ? 0 : _dataaa.length,
-                      itemCount: _dataaa.length ?? _dataaa1.length,
+                      itemCount: _dataaa.length,
                       itemBuilder: (context, index) {
                         return Card(
                           child: ListTile(
