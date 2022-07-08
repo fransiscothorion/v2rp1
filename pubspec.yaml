@@ -51,6 +51,7 @@ dependencies:
   http: ^0.13.4
   html: ^0.15.0
   intl: ^0.17.0
+  carousel_slider: ^4.1.1
 
 dev_dependencies:
   flutter_test:

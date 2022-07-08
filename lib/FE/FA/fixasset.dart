@@ -3,10 +3,12 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:v2rp1/BE/FAres.dart';
 import 'package:v2rp1/BE/controller.dart';
 import 'package:v2rp1/BE/reqip.dart';
 import 'package:v2rp1/BE/resD.dart';
@@ -15,24 +17,24 @@ import 'package:v2rp1/FE/navbar/navbar.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 
-class StockTable extends StatefulWidget {
-  const StockTable({Key? key}) : super(key: key);
+class FixAsset extends StatefulWidget {
+  const FixAsset({Key? key}) : super(key: key);
 
   @override
-  State<StockTable> createState() => _StockTableState();
+  State<FixAsset> createState() => _FixAssetState();
 }
 
-class _StockTableState extends State<StockTable> {
+class _FixAssetState extends State<FixAsset> {
   static var hasilSearch;
   static var conve = MsgHeader.conve;
   static var trxid = MsgHeader.trxid;
   static var datetime = MsgHeader.datetime;
   static TextControllers textControllers = Get.put(TextControllers());
-  static var searchVal = textControllers.stocktableController.value.text;
+  static var searchVal = textControllers.fixassetController.value.text;
   static var serverKeyValue;
 
-  late List _dataaa = <ResultData>[];
-  late final List _dataaa1 = <ResultData>[];
+  late List _dataaa = <FixAsset>[];
+  late final List _dataaa1 = <FixAsset>[];
 
   Future<String> getData(String searchVal) async {
     var searchValue = searchVal;
@@ -41,7 +43,7 @@ class _StockTableState extends State<StockTable> {
         body: jsonEncode({
           "trxid": "$trxid",
           "datetime": "$datetime",
-          "reqid": "0002",
+          "reqid": "501001",
           "id": "$searchValue"
         }));
     setState(() {
@@ -49,9 +51,13 @@ class _StockTableState extends State<StockTable> {
     });
     print(sendSearch.body);
 
-    final resultData = resultDataFromMap(sendSearch.body);
-    serverKeyValue = resultData.serverkey;
+    final fixAsset = fixAssetFromMap(sendSearch.body);
+    serverKeyValue = fixAsset.serverkey;
     print(serverKeyValue);
+
+    // final resultData = resultDataFromMap(sendSearch.body);
+    // serverKeyValue = resultData.serverkey;
+    // print(serverKeyValue);
     return "Successfull";
   }
 
@@ -62,6 +68,7 @@ class _StockTableState extends State<StockTable> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () {
         showDialog(
@@ -85,7 +92,7 @@ class _StockTableState extends State<StockTable> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Stock Table"),
+          title: const Text("Fix Assets"),
           centerTitle: true,
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
@@ -114,7 +121,7 @@ class _StockTableState extends State<StockTable> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
                     Text(
-                      'Stock Table',
+                      'Fix Assets',
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -125,7 +132,7 @@ class _StockTableState extends State<StockTable> {
                   height: 15,
                 ),
                 TextField(
-                  controller: textControllers.stocktableController.value,
+                  controller: textControllers.fixassetController.value,
                   onSubmitted: (value) {
                     searchProcess();
                   },
@@ -157,7 +164,7 @@ class _StockTableState extends State<StockTable> {
                       tooltip: 'Scan',
                       hoverColor: Colors.green,
                     ),
-                    hintText: 'Stock Code / Item Name',
+                    hintText: 'FA Number / Item Name',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide: const BorderSide(color: Colors.black)),
@@ -171,30 +178,114 @@ class _StockTableState extends State<StockTable> {
                   thickness: 0.8,
                   height: 25,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text('Item List'),
-                    const SizedBox(height: 15.0),
-                    // listData(),
-                    ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      // itemCount: _dataaa == null ? 0 : _dataaa.length,
-                      itemCount: _dataaa.length,
-                      itemBuilder: (context, index) {
-                        return Card(
-                          child: ListTile(
-                            title: Text(_dataaa[index]['itemname']),
-                            subtitle: Text(_dataaa[index]['stockid']),
-                            tileColor: HexColor('#E6BF00'),
-                            textColor: Colors.white,
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  const Text('Item List'),
+                  const SizedBox(height: 15.0),
+                  ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(
+                        height: 20,
+                      );
+                    },
+                    shrinkWrap: true,
+                    // itemCount: 3,
+                    itemCount: _dataaa.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        clipBehavior: Clip.antiAlias,
+                        shadowColor: HexColor('#E6BF00'),
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Stack(
+                              children: [
+                                Ink.image(
+                                  // image: const NetworkImage(
+                                  //   'https://www.pnep.co.id/img/slider/fleet4.jpg',
+                                  // ),
+                                  image: NetworkImage(
+                                    _dataaa[index]['imgdir'],
+                                  ),
+                                  height: 240,
+                                  fit: BoxFit.cover,
+                                ),
+                                Positioned(
+                                  bottom: 0,
+                                  right: 0,
+                                  left: 0,
+                                  child: Container(
+                                    color: HexColor('#E6BF00'),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 20),
+                                      child: Text(
+                                        _dataaa[index]['description'],
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255),
+                                          fontSize: 24,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 20, top: 10, bottom: 10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: const [
+                                      Text('F/Assets No.'),
+                                      Text('Description'),
+                                      Text('Category'),
+                                      Text('Brand'),
+                                      Text('Made In'),
+                                      Text('Reff.No.'),
+                                      Text('Req.No.'),
+                                      Text('P/O No.'),
+                                      Text('Request By'),
+                                      Text('Serial No.'),
+                                      Text('Location'),
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(_dataaa[index]['fadatano']),
+                                      Text(_dataaa[index]['description']),
+                                      Text(_dataaa[index]['category']),
+                                      Text(_dataaa[index]['brandname']),
+                                      Text(_dataaa[index]['countryname']),
+                                      Text(_dataaa[index]['reffno']),
+                                      Text(_dataaa[index]['reqno']),
+                                      Text(_dataaa[index]['pono']),
+                                      Text(_dataaa[index]['requestby']),
+                                      Text(_dataaa[index]['serialno']),
+                                      Text(_dataaa[index]['locationname']),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  )
+                ]),
               ],
             ),
           ),
@@ -204,7 +295,7 @@ class _StockTableState extends State<StockTable> {
   }
 
   Future<void> searchProcess() async {
-    var searchResult = textControllers.stocktableController.value.text;
+    var searchResult = textControllers.fixassetController.value.text;
     try {
       if (searchResult.length >= 3) {
         getData(searchVal);
@@ -218,7 +309,7 @@ class _StockTableState extends State<StockTable> {
                 width: 0.5,
                 style: BorderStyle.solid),
             content: const Text(
-              "Please Enter Valid Stock Code / Item Name",
+              "Please Enter Valid FA Number / Item Name",
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 16.0,

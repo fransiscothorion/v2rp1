@@ -6,4 +6,5 @@ class TextControllers extends GetxController {
   Rx<TextEditingController> passwordController = TextEditingController().obs;
   Rx<TextEditingController> vendor1Controller = TextEditingController().obs;
   Rx<TextEditingController> stocktableController = TextEditingController().obs;
+  Rx<TextEditingController> fixassetController = TextEditingController().obs;
 }

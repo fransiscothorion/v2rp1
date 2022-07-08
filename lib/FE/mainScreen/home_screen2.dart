@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:v2rp1/FE/FA/fixasset.dart';
 import 'package:v2rp1/FE/GR/goods_receive.dart';
 import 'package:v2rp1/FE/IT/internal_transfer.dart';
 import 'package:v2rp1/FE/MU/scan_mu.dart';
@@ -291,7 +292,7 @@ class HomeScreenn extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 12),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -351,6 +352,35 @@ class HomeScreenn extends StatelessWidget {
                                   ),
                                   Text('Stock'),
                                   Text('Table'),
+                                ],
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Material(
+                                    borderRadius: BorderRadius.circular(20),
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    child: Ink.image(
+                                      image:
+                                          AssetImage('images/kctgroupasli.png'),
+                                      height: 80,
+                                      width: 80,
+                                      fit: BoxFit.fill,
+                                      child: InkWell(
+                                        splashColor: Colors.black38,
+                                        onTap: () async {
+                                          Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => FixAsset(),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Text('Fix'),
+                                  Text('Assets'),
                                 ],
                               ),
                             ],

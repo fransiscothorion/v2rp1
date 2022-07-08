@@ -159,6 +159,7 @@ class _VendorBarcodeState extends State<VendorBarcode> {
                     const Text('Item List'),
                     const SizedBox(height: 15.0),
                     ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: _dataaa == null ? 0 : _dataaa.length,
                       itemBuilder: (context, index) {
