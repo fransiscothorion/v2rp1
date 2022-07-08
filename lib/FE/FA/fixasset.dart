@@ -215,12 +215,10 @@ class _FixAssetState extends State<FixAsset> {
                                   Stack(
                                     children: [
                                       Ink.image(
-                                        image: const NetworkImage(
-                                          'https://www.pnep.co.id/img/slider/fleet4.jpg',
+                                        image: NetworkImage(
+                                          'https://v2rp.net/' +
+                                              _dataaa[index]['imagedir'],
                                         ),
-                                        // image: NetworkImage(
-                                        //   'https://v2rp.net/' + _foto.toString(),
-                                        // ),
                                         height: 300,
                                         width: 350,
                                         fit: BoxFit.cover,
