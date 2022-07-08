@@ -379,7 +379,7 @@ class HomeScreenn extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Text('Fix'),
+                                  Text('Fixed'),
                                   Text('Assets'),
                                 ],
                               ),

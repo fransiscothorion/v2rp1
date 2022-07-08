@@ -93,7 +93,7 @@ class _FixAssetState extends State<FixAsset> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Fix Assets"),
+          title: const Text("Fixed Assets"),
           centerTitle: true,
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
@@ -121,7 +121,7 @@ class _FixAssetState extends State<FixAsset> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
                     Text(
-                      'Fix Assets',
+                      'Fixed Assets',
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -156,9 +156,9 @@ class _FixAssetState extends State<FixAsset> {
                     suffixIcon: IconButton(
                       icon: const Icon(Icons.qr_code_2),
                       onPressed: () async {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const ScanSTable(),
-                        ));
+                        // Navigator.of(context).push(MaterialPageRoute(
+                        //   builder: (context) => const ScanSTable(),
+                        // ));
                       },
                       splashColor: Colors.green,
                       tooltip: 'Scan',
@@ -182,7 +182,7 @@ class _FixAssetState extends State<FixAsset> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Text('Item List'),
+                      // const Text('Item List'),
                       const SizedBox(height: 15.0),
                       Container(
                         height: size.height / 1.5,
@@ -336,6 +336,7 @@ class _FixAssetState extends State<FixAsset> {
                                               _dataaa[index]['fadatano'],
                                               style: const TextStyle(
                                                 fontSize: 15,
+                                                fontWeight: FontWeight.bold,
                                               ),
                                             ),
                                             Text(
@@ -344,17 +345,52 @@ class _FixAssetState extends State<FixAsset> {
                                                 fontSize: 15,
                                               ),
                                             ),
-                                            Text(
-                                              _dataaa[index]['category'],
-                                              style: const TextStyle(
-                                                fontSize: 15,
-                                              ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  _dataaa[index]
+                                                      ['categoryname'],
+                                                  style: const TextStyle(
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                                const Text(
+                                                  ' - ',
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  _dataaa[index]
+                                                      ['subcategoryname'],
+                                                  style: const TextStyle(
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                            Text(
-                                              _dataaa[index]['brandname'],
-                                              style: const TextStyle(
-                                                fontSize: 15,
-                                              ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  _dataaa[index]['brandname'],
+                                                  style: const TextStyle(
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                                const Text(
+                                                  ' - ',
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  _dataaa[index]
+                                                      ['brandtipename'],
+                                                  style: const TextStyle(
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                             Text(
                                               _dataaa[index]['countryname'],
