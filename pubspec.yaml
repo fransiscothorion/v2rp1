@@ -65,7 +65,7 @@ dev_dependencies:
   flutter_lints: ^1.0.0
 
 flutter_icons:
-  image_path: "images/kctgroupasli.png"
+  image_path: "images/appicon.png"
   android: true
   ios: true
 

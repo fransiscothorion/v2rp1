@@ -301,8 +301,8 @@ class HomeScreenn extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20),
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
                                     child: Ink.image(
-                                      image:
-                                          AssetImage('images/kctgroupasli.png'),
+                                      image: AssetImage(
+                                          'images/barcoderegist.png'),
                                       height: 80,
                                       width: 80,
                                       fit: BoxFit.fill,
@@ -332,7 +332,7 @@ class HomeScreenn extends StatelessWidget {
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
                                     child: Ink.image(
                                       image:
-                                          AssetImage('images/kctgroupasli.png'),
+                                          AssetImage('images/stocktable.png'),
                                       height: 80,
                                       width: 80,
                                       fit: BoxFit.fill,
@@ -362,7 +362,7 @@ class HomeScreenn extends StatelessWidget {
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
                                     child: Ink.image(
                                       image:
-                                          AssetImage('images/kctgroupasli.png'),
+                                          AssetImage('images/fixedassets.png'),
                                       height: 80,
                                       width: 80,
                                       fit: BoxFit.fill,
