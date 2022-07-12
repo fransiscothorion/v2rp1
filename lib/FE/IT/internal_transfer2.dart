@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/IT/detail_it.dart';
 import 'package:v2rp1/FE/IT/internal_transfer.dart';
@@ -53,11 +56,12 @@ class _InternalTransfer2State extends State<InternalTransfer2> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const InternalTransfer()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //       builder: (context) => const InternalTransfer()),
+              // );
+              Get.to(InternalTransfer());
             },
           ),
         ),
@@ -180,12 +184,13 @@ class _InternalTransfer2State extends State<InternalTransfer2> {
                 child: Text('SAVE DATA'),
               ),
               onPressed: () async {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const InternalTransfer3(),
-                  ),
-                );
+                // Navigator.pushReplacement(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const InternalTransfer3(),
+                //   ),
+                // );
+                Get.to(InternalTransfer3());
               },
               style: TextButton.styleFrom(
                 primary: Colors.white,

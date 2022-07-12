@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:v2rp1/FE/mainScreen/login_screen4.dart';
-import 'package:v2rp1/additional/loading.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -45,10 +45,10 @@ class SettingScreen extends StatelessWidget {
                 const SizedBox(
                   height: 15.0,
                 ),
-                Text(
-                  "$finalUsername",
-                  style: const TextStyle(fontSize: 20.0),
-                ),
+                // Text(
+                //   // "$finalUsername",
+                //   style: const TextStyle(fontSize: 20.0),
+                // ),
                 const SizedBox(
                   height: 50,
                 ),
@@ -61,11 +61,12 @@ class SettingScreen extends StatelessWidget {
                         await SharedPreferences.getInstance();
                     sharedPreferences.remove('username');
                     // Get.to(LoginPage());
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => const LoginPage4(),
-                      ),
-                    );
+                    // Navigator.of(context).pushReplacement(
+                    //   MaterialPageRoute(
+                    //     builder: (context) => const LoginPage4(),
+                    //   ),
+                    // );
+                    Get.to(LoginPage4());
                   },
                   child: const Text("LOGOUT"),
                 ),

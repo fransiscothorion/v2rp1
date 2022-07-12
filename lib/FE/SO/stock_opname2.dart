@@ -1,9 +1,10 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, prefer_const_constructors
 
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/SO/detail_so.dart';
 import 'package:v2rp1/FE/SO/stock_opname.dart';
@@ -52,9 +53,10 @@ class _StockOpname2State extends State<StockOpname2> {
           visible: isVisible,
           child: FloatingActionButton(
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const BarcodeScannerWithController(),
-              ));
+              // Navigator.of(context).push(MaterialPageRoute(
+              //   builder: (context) => const BarcodeScannerWithController(),
+              // ));
+              Get.to(BarcodeScannerWithController());
             },
             elevation: 12,
             tooltip: 'Add Item',
@@ -75,10 +77,11 @@ class _StockOpname2State extends State<StockOpname2> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const StockOpname()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const StockOpname()),
+              // );
+              Get.to(StockOpname());
             },
           ),
         ),
@@ -96,10 +99,11 @@ class _StockOpname2State extends State<StockOpname2> {
                     suffixIcon: IconButton(
                       icon: const Icon(Icons.qr_code_scanner),
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              const BarcodeScannerWithController(),
-                        ));
+                        // Navigator.of(context).push(MaterialPageRoute(
+                        //   builder: (context) =>
+                        //       const BarcodeScannerWithController(),
+                        // ));
+                        Get.to(BarcodeScannerWithController());
                       },
                     ),
                     border: OutlineInputBorder(
@@ -212,13 +216,14 @@ class _StockOpname2State extends State<StockOpname2> {
                 child: Text('SAVE DATA'),
               ),
               onPressed: () async {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    // builder: (context) => const StockOpname3(),
-                    builder: (context) => const StockOpname3(),
-                  ),
-                );
+                // Navigator.pushReplacement(
+                //   context,
+                //   MaterialPageRoute(
+                //     // builder: (context) => const StockOpname3(),
+                //     builder: (context) => const StockOpname3(),
+                //   ),
+                // );
+                Get.to(StockOpname3());
               },
               style: TextButton.styleFrom(
                 primary: Colors.white,

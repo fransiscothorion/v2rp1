@@ -39,8 +39,6 @@ class _LoginPage4State extends State<LoginPage4>
   @override
   void dispose() {
     _animatedController.dispose();
-    // _usernameController.dispose();
-    // _passwordController.dispose();
     super.dispose();
   }
 
@@ -61,6 +59,7 @@ class _LoginPage4State extends State<LoginPage4>
             }
           });
     _animatedController.forward();
+    MsgHeader.Reqip();
 
     super.initState();
   }
@@ -152,9 +151,6 @@ class _LoginPage4State extends State<LoginPage4>
                           _timer =
                               Timer(const Duration(milliseconds: 1000), (() {
                             MsgHeader.Reqip();
-
-                            // MsgHeader.convi(userVal, passVal);
-                            // MsgHeader.Login();
                           }));
                         },
                         obscureText: _obsecuredText,
@@ -214,73 +210,33 @@ class _LoginPage4State extends State<LoginPage4>
     try {
       if (_formKey.currentState!.validate()) {
         if (ipRes == null) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            backgroundColor: Colors.white,
-            elevation: 10.0,
-            shape: Border.all(
-                color: Color.fromARGB(255, 239, 16, 0),
-                width: 0.5,
-                style: BorderStyle.solid),
-            content: Text(
-              "Connecting To Server... Please Try Again",
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 16.0,
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.0,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ));
+          Get.snackbar(
+            "Connecting To Server...",
+            "Please Try Again",
+            icon: Icon(Icons.close),
+            backgroundColor: Colors.red,
+          );
         } else if (loginResult.toString() == '{00}') {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.white,
-              elevation: 10.0,
-              shape: Border.all(
-                  color: Color.fromARGB(255, 0, 210, 0),
-                  width: 0.5,
-                  style: BorderStyle.solid),
-              content: Text(
-                "Login Success!",
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.0,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.0,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
+          Get.snackbar(
+            "Login Success",
+            "Login Telah Berhasil",
+            icon: Icon(Icons.check),
+            backgroundColor: Colors.green,
           );
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => const Navbar(),
-          ));
+          //----------------
+          // Navigator.of(context).pushReplacement(MaterialPageRoute(
+          //   builder: (context) => const Navbar(),
+          // ));
+          Get.to(Navbar());
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.white,
-              elevation: 10.0,
-              shape: Border.all(
-                  color: Color.fromARGB(255, 215, 0, 0),
-                  width: 0.5,
-                  style: BorderStyle.solid),
-              content: Text(
-                "Login Failed! " + loginResult.toString(),
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.0,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.0,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
+          Get.snackbar(
+            "Login Error",
+            "Login Gagal",
+            snackPosition: SnackPosition.BOTTOM,
+            icon: Icon(Icons.close),
+            backgroundColor: Colors.red,
           );
-          _timer = Timer(Duration(seconds: 3), (() {
+          _timer = Timer(Duration(seconds: 1), (() {
             SystemNavigator.pop();
           }));
         }

@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/SM/detail_sm.dart';
 import 'package:v2rp1/FE/SM/stock_movement.dart';
@@ -53,10 +56,11 @@ class _StockMovement2State extends State<StockMovement2> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const StockMovement()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const StockMovement()),
+              // );
+              Get.to(StockMovement());
             },
           ),
         ),
@@ -179,12 +183,13 @@ class _StockMovement2State extends State<StockMovement2> {
                 child: Text('SAVE DATA'),
               ),
               onPressed: () async {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const StockMovement3(),
-                  ),
-                );
+                // Navigator.pushReplacement(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const StockMovement3(),
+                //   ),
+                // );
+                Get.to(StockMovement3());
               },
               style: TextButton.styleFrom(
                 primary: Colors.white,

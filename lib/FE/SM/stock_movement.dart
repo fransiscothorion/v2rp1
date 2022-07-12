@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/SM/stock_movement2.dart';
 import 'package:v2rp1/FE/navbar/navbar.dart';
@@ -52,10 +55,11 @@ class _StockMovementState extends State<StockMovement> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const Navbar()),
-              );
+              // Navigator.pushReplacement(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const Navbar()),
+              // );
+              Get.to(Navbar());
             },
           ),
         ),
@@ -122,12 +126,13 @@ class _StockMovementState extends State<StockMovement> {
               child: Text('CREATE NEW'),
             ),
             onPressed: () async {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const StockMovement2(),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => const StockMovement2(),
+              //   ),
+              // );
+              Get.to(StockMovement2());
             },
             style: TextButton.styleFrom(
               primary: Colors.white,

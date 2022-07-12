@@ -1,9 +1,10 @@
-// ignore_for_file: prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_typing_uninitialized_variables, prefer_const_constructors
 
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:v2rp1/FE/MU/material_use2.dart';
 
@@ -111,9 +112,10 @@ class _ScanWh2State extends State<ScanWh2> {
                     ),
                   ),
                 );
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => const MaterialUse2(),
-                ));
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //   builder: (context) => const MaterialUse2(),
+                // ));
+                Get.to(MaterialUse2());
               })),
     );
   }

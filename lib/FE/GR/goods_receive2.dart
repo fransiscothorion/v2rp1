@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/GR/allocation_gr.dart';
 import 'package:v2rp1/FE/GR/goods_receive.dart';
@@ -53,10 +56,11 @@ class _GoodsReceive2State extends State<GoodsReceive2> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const GoodsReceive()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const GoodsReceive()),
+              // );
+              Get.to(GoodsReceive());
             },
           ),
         ),
@@ -188,12 +192,12 @@ class _GoodsReceive2State extends State<GoodsReceive2> {
                 child: Text('SAVE DATA'),
               ),
               onPressed: () async {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const GoodsReceive3(),
-                  ),
-                );
+                // Navigator.pushReplacement(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const GoodsReceive3(),
+                //   ),
+                Get.to(GoodsReceive3());
               },
               style: TextButton.styleFrom(
                 primary: Colors.white,

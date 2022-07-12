@@ -1,8 +1,11 @@
 // import 'package:flutter/cupertino.dart';
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/GR/goods_receive2.dart';
 import 'package:v2rp1/FE/navbar/navbar.dart';
@@ -54,10 +57,11 @@ class _GoodsReceiveState extends State<GoodsReceive> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const Navbar()),
-              );
+              //   Navigator.pushReplacement(
+              //     context,
+              //     MaterialPageRoute(builder: (context) => const Navbar()),
+              //   );
+              Get.to(Navbar());
             },
           ),
         ),
@@ -125,12 +129,13 @@ class _GoodsReceiveState extends State<GoodsReceive> {
               child: Text('CREATE NEW'),
             ),
             onPressed: () async {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const GoodsReceive2(),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => const GoodsReceive2(),
+              //   ),
+              // );
+              Get.to(GoodsReceive2());
             },
             style: TextButton.styleFrom(
               primary: Colors.white,

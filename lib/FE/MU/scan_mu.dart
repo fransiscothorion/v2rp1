@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:v2rp1/FE/MU/material_use.dart';
 
@@ -107,9 +110,10 @@ class _ScanWhState extends State<ScanWh> {
                     ),
                   ),
                 );
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => const MaterialUse(),
-                ));
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //   builder: (context) => const MaterialUse(),
+                // ));
+                Get.to(MaterialUse());
               })),
     );
   }

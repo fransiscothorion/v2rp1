@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:v2rp1/FE/MU/material_use2.dart';
@@ -44,10 +47,11 @@ class MaterialUse3 extends StatelessWidget {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const MaterialUse2()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const MaterialUse2()),
+              // );
+              Get.to(MaterialUse2());
             },
           ),
         ),

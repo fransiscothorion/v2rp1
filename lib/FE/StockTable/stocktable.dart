@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, unused_field, unrelated_type_equality_checks, unnecessary_new, prefer_typing_uninitialized_variables, unnecessary_string_interpolations, unnecessary_null_comparison
+// ignore_for_file: avoid_print, unused_field, unrelated_type_equality_checks, unnecessary_new, prefer_typing_uninitialized_variables, unnecessary_string_interpolations, unnecessary_null_comparison, prefer_const_constructors
 
 import 'dart:convert';
 import 'dart:math';
@@ -209,26 +209,11 @@ class _StockTableState extends State<StockTable> {
       if (searchResult.length >= 3) {
         getData(searchVal);
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: Colors.white,
-            elevation: 10.0,
-            shape: Border.all(
-                color: const Color.fromARGB(255, 192, 0, 0),
-                width: 0.5,
-                style: BorderStyle.solid),
-            content: const Text(
-              "Please Enter Valid Stock Code / Item Name",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16.0,
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.0,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
+        Get.snackbar(
+          "Error",
+          "Please Enter Valid Stock Code / Item Name",
+          icon: Icon(Icons.close),
+          backgroundColor: Colors.red,
         );
       }
     } catch (e) {

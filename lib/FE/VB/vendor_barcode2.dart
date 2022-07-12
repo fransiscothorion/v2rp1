@@ -1,10 +1,11 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, avoid_print
+// ignore_for_file: prefer_typing_uninitialized_variables, avoid_print, prefer_const_constructors
 
 import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/BE/reqip.dart';
 import 'package:v2rp1/FE/VB/dialog_box_vb.dart';
@@ -65,10 +66,11 @@ class _VendorBarcode2State extends State<VendorBarcode2> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const VendorBarcode()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const VendorBarcode()),
+              // );
+              Get.to(VendorBarcode());
             },
           ),
         ),

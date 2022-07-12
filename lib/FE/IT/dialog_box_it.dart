@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/IT/internal_transfer.dart';
 import 'package:v2rp1/FE/navbar/navbar.dart';
@@ -81,12 +84,13 @@ class _CustomDialogBoxITState extends State<CustomDialogBoxIT> {
                   children: [
                     TextButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Navbar(),
-                            ),
-                          );
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => const Navbar(),
+                          //   ),
+                          // );
+                          Get.to(Navbar());
                         },
                         child: Text(
                           widget.text,
@@ -95,12 +99,13 @@ class _CustomDialogBoxITState extends State<CustomDialogBoxIT> {
                         )),
                     TextButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const InternalTransfer(),
-                            ),
-                          );
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => const InternalTransfer(),
+                          //   ),
+                          // );
+                          Get.to(InternalTransfer());
                         },
                         child: Text(
                           widget.home,

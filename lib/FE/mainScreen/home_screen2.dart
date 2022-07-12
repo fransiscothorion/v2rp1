@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/FA/fixasset.dart';
 import 'package:v2rp1/FE/GR/goods_receive.dart';
@@ -119,13 +120,14 @@ class HomeScreenn extends StatelessWidget {
                                     child: InkWell(
                                       splashColor: Colors.black38,
                                       onTap: () async {
-                                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                GoodsReceive(),
-                                          ),
-                                        );
+                                        // Navigator.pushReplacement(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //     builder: (context) =>
+                                        //         GoodsReceive(),
+                                        //   ),
+                                        Get.to(GoodsReceive());
+                                        // );
                                       },
                                     ),
                                   ),
@@ -148,12 +150,13 @@ class HomeScreenn extends StatelessWidget {
                                     child: InkWell(
                                       splashColor: Colors.black38,
                                       onTap: () async {
-                                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => ScanWh(),
-                                          ),
-                                        );
+                                        // Navigator.pushReplacement(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //     builder: (context) => ScanWh(),
+                                        //   ),
+                                        // );
+                                        Get.to(ScanWh());
                                       },
                                     ),
                                   ),
@@ -175,13 +178,14 @@ class HomeScreenn extends StatelessWidget {
                                     child: InkWell(
                                       splashColor: Colors.black38,
                                       onTap: () async {
-                                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                InternalTransfer(),
-                                          ),
-                                        );
+                                        // Navigator.pushReplacement(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //     builder: (context) =>
+                                        //         InternalTransfer(),
+                                        //   ),
+                                        // );
+                                        Get.to(InternalTransfer());
                                       },
                                     ),
                                   ),
@@ -213,13 +217,14 @@ class HomeScreenn extends StatelessWidget {
                                     child: InkWell(
                                       splashColor: Colors.black38,
                                       onTap: () async {
-                                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                StockMovement(),
-                                          ),
-                                        );
+                                        // Navigator.pushReplacement(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //     builder: (context) =>
+                                        //         StockMovement(),
+                                        //   ),
+                                        // );
+                                        Get.to(StockMovement());
                                       },
                                     ),
                                   ),
@@ -242,13 +247,14 @@ class HomeScreenn extends StatelessWidget {
                                     child: InkWell(
                                       splashColor: Colors.black38,
                                       onTap: () async {
-                                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                StockTransfer(),
-                                          ),
-                                        );
+                                        // Navigator.pushReplacement(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //     builder: (context) =>
+                                        //         StockTransfer(),
+                                        //   ),
+                                        // );
+                                        Get.to(StockTransfer());
                                       },
                                     ),
                                   ),
@@ -270,13 +276,14 @@ class HomeScreenn extends StatelessWidget {
                                     child: InkWell(
                                       splashColor: Colors.black38,
                                       onTap: () async {
-                                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            // builder: (context) => OtpScreen2(),
-                                            builder: (context) => StockOpname(),
-                                          ),
-                                        );
+                                        // Navigator.pushReplacement(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //     // builder: (context) => OtpScreen2(),
+                                        //     builder: (context) => StockOpname(),
+                                        //   ),
+                                        // );
+                                        Get.to(StockOpname());
                                       },
                                     ),
                                   ),
@@ -309,13 +316,14 @@ class HomeScreenn extends StatelessWidget {
                                       child: InkWell(
                                         splashColor: Colors.black38,
                                         onTap: () async {
-                                          Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  VendorBarcode(),
-                                            ),
-                                          );
+                                          // Navigator.pushReplacement(
+                                          //   context,
+                                          //   MaterialPageRoute(
+                                          //     builder: (context) =>
+                                          //         VendorBarcode(),
+                                          //   ),
+                                          // );
+                                          Get.to(VendorBarcode());
                                         },
                                       ),
                                     ),
@@ -339,13 +347,14 @@ class HomeScreenn extends StatelessWidget {
                                       child: InkWell(
                                         splashColor: Colors.black38,
                                         onTap: () async {
-                                          Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  StockTable(),
-                                            ),
-                                          );
+                                          // Navigator.pushReplacement(
+                                          //   context,
+                                          //   MaterialPageRoute(
+                                          //     builder: (context) =>
+                                          //         StockTable(),
+                                          //   ),
+                                          // );
+                                          Get.to(StockTable());
                                         },
                                       ),
                                     ),
@@ -369,12 +378,13 @@ class HomeScreenn extends StatelessWidget {
                                       child: InkWell(
                                         splashColor: Colors.black38,
                                         onTap: () async {
-                                          Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => FixAsset(),
-                                            ),
-                                          );
+                                          // Navigator.pushReplacement(
+                                          //   context,
+                                          //   MaterialPageRoute(
+                                          //     builder: (context) => FixAsset(),
+                                          //   ),
+                                          // );
+                                          Get.to(FixAsset());
                                         },
                                       ),
                                     ),

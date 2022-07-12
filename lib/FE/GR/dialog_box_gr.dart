@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/GR/goods_receive.dart';
 import 'package:v2rp1/FE/navbar/navbar.dart';
@@ -95,12 +98,13 @@ class _CustomDialogBoxState extends State<CustomDialogBoxGR> {
                         )),
                     TextButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const GoodsReceive(),
-                            ),
-                          );
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => const GoodsReceive(),
+                          //   ),
+                          // );
+                          Get.to(GoodsReceive());
                         },
                         child: Text(
                           widget.home,

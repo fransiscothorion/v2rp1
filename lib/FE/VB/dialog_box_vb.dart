@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/VB/vendor_barcode.dart';
 import 'package:v2rp1/FE/navbar/navbar.dart';
@@ -79,12 +82,13 @@ class _CustomDialogBoxVbState extends State<CustomDialogBoxVb> {
                   children: [
                     TextButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Navbar(),
-                            ),
-                          );
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => const Navbar(),
+                          //   ),
+                          // );
+                          Get.to(Navbar());
                         },
                         child: Text(
                           widget.text,
@@ -93,12 +97,13 @@ class _CustomDialogBoxVbState extends State<CustomDialogBoxVb> {
                         )),
                     TextButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const VendorBarcode(),
-                            ),
-                          );
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => const VendorBarcode(),
+                          //   ),
+                          // );
+                          Get.to(VendorBarcode());
                         },
                         child: Text(
                           widget.home,

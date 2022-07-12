@@ -52,23 +52,9 @@ class _AddDetailSoState extends State<AddDetailSo> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              // const Text(
-              //   "Add Detail",
-              //   style: TextStyle(fontWeight: FontWeight.w800),
-              // ),
               const SizedBox(
                 height: 15,
               ),
-              // TextField(
-              //   decoration: InputDecoration(
-              //     border: OutlineInputBorder(
-              //         borderRadius: BorderRadius.circular(10)),
-              //     labelText: 'Rack',
-              //   ),
-              // ),
-              // const SizedBox(
-              //   height: 20,
-              // ),
               const Text(
                 "Add Quantity",
                 style: TextStyle(fontWeight: FontWeight.w800),
@@ -79,33 +65,6 @@ class _AddDetailSoState extends State<AddDetailSo> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // SizedBox(
-                  //   width: 150,
-                  //   height: 40,
-                  //   child: TextField(
-                  //     decoration: InputDecoration(
-                  //       border: OutlineInputBorder(
-                  //           borderRadius: BorderRadius.circular(10)),
-                  //       labelText: 'Stock Card',
-                  //     ),
-                  //   ),
-                  // ),
-                  // const SizedBox(
-                  //   height: 15,
-                  // ),
-                  // SizedBox(
-                  //   width: 150,
-                  //   height: 40,
-                  //   child: TextField(
-                  //     decoration: InputDecoration(
-                  //         border: OutlineInputBorder(
-                  //             borderRadius: BorderRadius.circular(10)),
-                  //         labelText: 'OpName'),
-                  //   ),
-                  // ),
-                  // const SizedBox(
-                  //   height: 15,
-                  // ),
                   SizedBox(
                     width: 150,
                     height: 40,

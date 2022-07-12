@@ -1,9 +1,10 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, prefer_const_constructors
 
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/MU/detail_mu.dart';
 import 'package:v2rp1/FE/MU/material_use.dart';
@@ -76,10 +77,11 @@ class _MaterialUse2State extends State<MaterialUse2> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const MaterialUse()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const MaterialUse()),
+              // );
+              Get.to(MaterialUse());
             },
           ),
         ),
@@ -97,9 +99,10 @@ class _MaterialUse2State extends State<MaterialUse2> {
                     suffixIcon: IconButton(
                       icon: const Icon(Icons.qr_code_scanner),
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const ScanWh2(),
-                        ));
+                        // Navigator.of(context).push(MaterialPageRoute(
+                        //   builder: (context) => const ScanWh2(),
+                        // ));
+                        Get.to(ScanWh2());
                       },
                     ),
                     border: OutlineInputBorder(
@@ -200,12 +203,13 @@ class _MaterialUse2State extends State<MaterialUse2> {
                 child: Text('SAVE DATA'),
               ),
               onPressed: () async {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MaterialUse3(),
-                  ),
-                );
+                // Navigator.pushReplacement(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const MaterialUse3(),
+                //   ),
+                // );
+                Get.to(MaterialUse3());
               },
               style: TextButton.styleFrom(
                 primary: Colors.white,

@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/IT/internal_transfer2.dart';
 import 'package:v2rp1/FE/navbar/navbar.dart';
@@ -53,10 +56,11 @@ class _InternalTransferState extends State<InternalTransfer> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const Navbar()),
-              );
+              // Navigator.pushReplacement(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const Navbar()),
+              // );
+              Get.to(Navbar());
             },
           ),
         ),
@@ -123,12 +127,13 @@ class _InternalTransferState extends State<InternalTransfer> {
               child: Text('CREATE NEW'),
             ),
             onPressed: () async {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const InternalTransfer2(),
-                ),
-              );
+              // Navigator.pushReplacement(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => const InternalTransfer2(),
+              //   ),
+              // );
+              Get.to(InternalTransfer2());
             },
             style: TextButton.styleFrom(
               primary: Colors.white,

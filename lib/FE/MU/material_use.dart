@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/MU/material_use2.dart';
 import 'package:v2rp1/FE/navbar/navbar.dart';
@@ -51,10 +54,11 @@ class _MaterialUseState extends State<MaterialUse> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const Navbar()),
-              );
+              // Navigator.pushReplacement(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const Navbar()),
+              // );
+              Get.to(Navbar());
             },
           ),
         ),
@@ -122,12 +126,13 @@ class _MaterialUseState extends State<MaterialUse> {
               child: Text('CREATE NEW'),
             ),
             onPressed: () async {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const MaterialUse2(),
-                ),
-              );
+              // Navigator.pushReplacement(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => const MaterialUse2(),
+              //   ),
+              // );
+              Get.to(MaterialUse2());
             },
             style: TextButton.styleFrom(
               primary: Colors.white,

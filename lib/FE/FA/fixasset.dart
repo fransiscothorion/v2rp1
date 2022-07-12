@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, unused_field, unrelated_type_equality_checks, unnecessary_new, prefer_typing_uninitialized_variables, unnecessary_string_interpolations, unnecessary_null_comparison
+// ignore_for_file: avoid_print, unused_field, unrelated_type_equality_checks, unnecessary_new, prefer_typing_uninitialized_variables, unnecessary_string_interpolations, unnecessary_null_comparison, prefer_const_constructors
 
 import 'dart:convert';
 import 'dart:math';
@@ -29,13 +29,24 @@ class _FixAssetState extends State<FixAsset> {
   static var conve = MsgHeader.conve;
   static var trxid = MsgHeader.trxid;
   static var datetime = MsgHeader.datetime;
-  static TextControllers textControllers = Get.put(TextControllers());
+  static late TextControllers textControllers = Get.put(TextControllers());
   static var searchVal = textControllers.fixassetController.value.text;
   static var serverKeyValue;
 
   late List _dataaa = <FixAsset>[];
   late final List _dataaa1 = <FixAsset>[];
   late List _foto;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    textControllers.dispose();
+    super.dispose();
+  }
 
   Future<String> getData(String searchVal) async {
     var searchValue = searchVal;
@@ -49,22 +60,14 @@ class _FixAssetState extends State<FixAsset> {
         }));
     setState(() {
       _dataaa = json.decode(sendSearch.body)['result'];
+      searchValue = '';
     });
     print(sendSearch.body);
 
     final fixAsset = fixAssetFromMap(sendSearch.body);
     serverKeyValue = fixAsset.serverkey;
     print(serverKeyValue);
-
-    // final resultData = resultDataFromMap(sendSearch.body);
-    // serverKeyValue = resultData.serverkey;
-    // print(serverKeyValue);
     return "Successfull";
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 
   @override
@@ -101,10 +104,11 @@ class _FixAssetState extends State<FixAsset> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const Navbar()),
-              );
+              // Navigator.pushReplacement(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const Navbar()),
+              // );
+              Get.to(Navbar());
             },
           ),
         ),
@@ -135,6 +139,7 @@ class _FixAssetState extends State<FixAsset> {
                   controller: textControllers.fixassetController.value,
                   onSubmitted: (value) {
                     searchProcess();
+                    Get.deleteAll();
                   },
                   // controller: vendor_contler.clear(),
                   onChanged: (value) {
