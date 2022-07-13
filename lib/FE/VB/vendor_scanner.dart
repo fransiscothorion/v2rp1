@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:v2rp1/FE/VB/aaa.dart';
 import 'package:v2rp1/FE/VB/vendor_barcode2.dart';
 
 class ScanVb extends StatefulWidget {
@@ -123,9 +124,9 @@ class _ScanVbState extends State<ScanVb> {
             // Navigator.of(context).push(MaterialPageRoute(
             //   builder: (context) => VendorBarcode2(
             //     barcodeResult: codeBarcode,
-            // idstock2: widget.idstock,
-            // itemname2: widget.itemname,
-            // serverKeyVal2: widget.serverKeyVal,
+            //     idstock2: widget.idstock,
+            //     itemname2: widget.itemname,
+            //     serverKeyVal2: widget.serverKeyVal,
             //   ),
             // ));
             Get.to(VendorBarcode2(
@@ -134,6 +135,7 @@ class _ScanVbState extends State<ScanVb> {
               itemname2: widget.itemname,
               serverKeyVal2: widget.serverKeyVal,
             ));
+            // Get.to(Testinggg());
 
             setState(() {
               cameraController.stop();

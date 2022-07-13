@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/FE/ST/detail_st.dart';
-import 'package:v2rp1/FE/ST/stock_transfer.dart';
 import 'package:v2rp1/FE/ST/stock_transfer3.dart';
 
 class StockTransfer2 extends StatefulWidget {

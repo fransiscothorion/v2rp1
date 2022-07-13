@@ -2,6 +2,8 @@
 //
 //     final fixAsset = fixAssetFromMap(jsonString);
 
+// ignore_for_file: file_names
+
 import 'dart:convert';
 
 FixAsset fixAssetFromMap(String str) => FixAsset.fromMap(json.decode(str));

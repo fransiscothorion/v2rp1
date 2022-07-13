@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:v2rp1/FE/SM/stock_movement2.dart';
 
 import 'dialog_box_sm.dart';
 

@@ -5,6 +5,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:v2rp1/BE/reqip.dart';
 import 'package:v2rp1/BE/resD.dart';
@@ -26,7 +27,7 @@ class _ScanSTableState extends State<ScanSTable> {
   static var datetime = MsgHeader.datetime;
   static var codeBarcode;
   static var serverKeyValue;
-  static late List _dataaa1 = <ResultData>[];
+  static late List _dataaa = <ResultData>[];
 
   @override
   Widget build(BuildContext context) {
@@ -99,27 +100,34 @@ class _ScanSTableState extends State<ScanSTable> {
           onDetect: (barcode, args) {
             codeBarcode = barcode.rawValue;
             debugPrint('Barcode found! $codeBarcode');
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                backgroundColor: Colors.white,
-                elevation: 10.0,
-                shape: Border.all(
-                    color: const Color.fromARGB(255, 0, 215, 4),
-                    width: 0.5,
-                    style: BorderStyle.solid),
-                content: Text(
-                  "Barcode Found! = $codeBarcode",
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16.0,
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.0,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   SnackBar(
+            //     backgroundColor: Colors.white,
+            //     elevation: 10.0,
+            //     shape: Border.all(
+            //         color: const Color.fromARGB(255, 0, 215, 4),
+            //         width: 0.5,
+            //         style: BorderStyle.solid),
+            //     content: Text(
+            //       "Barcode Found! = $codeBarcode",
+            //       style: const TextStyle(
+            //         color: Colors.black,
+            //         fontSize: 16.0,
+            //         fontStyle: FontStyle.italic,
+            //         fontWeight: FontWeight.bold,
+            //         letterSpacing: 1.0,
+            //       ),
+            //       textAlign: TextAlign.center,
+            //     ),
+            //   ),
+            // );
+            Get.snackbar(
+              "Barcode Found!",
+              "$codeBarcode",
+              icon: const Icon(Icons.qr_code),
+              backgroundColor: Colors.green,
             );
+
             getData();
             Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => const StockTable(),
@@ -134,40 +142,18 @@ class _ScanSTableState extends State<ScanSTable> {
   }
 
   Future<String> getData() async {
-    // var searchValue = searchVal;
+    var searchValue = codeBarcode;
     var sendSearch = await http.post(Uri.https('www.v2rp.net', '/ptemp/'),
         headers: {'x-v2rp-key': conve},
         body: jsonEncode({
           "trxid": "$trxid",
           "datetime": datetime,
           "reqid": "0002",
-          "id": "$codeBarcode"
+          "id": "$searchValue"
         }));
-    if (_dataaa1 == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.white,
-          elevation: 10.0,
-          shape: Border.all(
-              color: const Color.fromARGB(255, 253, 0, 0),
-              width: 0.5,
-              style: BorderStyle.solid),
-          content: const Text(
-            "data not found",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 16.0,
-              fontStyle: FontStyle.italic,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.0,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-      );
-    } else {
-      _dataaa1 = json.decode(sendSearch.body)['result'];
-    }
+    // setState(() {
+    //   // _dataaa = json.decode(sendSearch.body)['result'];
+    // });
     print(sendSearch.body);
 
     final resultData = resultDataFromMap(sendSearch.body);

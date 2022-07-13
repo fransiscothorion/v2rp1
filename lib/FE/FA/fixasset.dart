@@ -3,7 +3,6 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -11,8 +10,6 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/BE/FAres.dart';
 import 'package:v2rp1/BE/controller.dart';
 import 'package:v2rp1/BE/reqip.dart';
-import 'package:v2rp1/BE/resD.dart';
-import 'package:v2rp1/FE/StockTable/stocktable_scanner.dart';
 import 'package:v2rp1/FE/navbar/navbar.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -189,7 +186,7 @@ class _FixAssetState extends State<FixAsset> {
                     children: [
                       // const Text('Item List'),
                       const SizedBox(height: 15.0),
-                      Container(
+                      SizedBox(
                         height: size.height / 1.5,
                         // width: size.width / 1,
                         child: ListView.separated(
@@ -465,26 +462,31 @@ class _FixAssetState extends State<FixAsset> {
       if (searchResult.length >= 3) {
         getData(searchVal);
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: Colors.white,
-            elevation: 10.0,
-            shape: Border.all(
-                color: const Color.fromARGB(255, 192, 0, 0),
-                width: 0.5,
-                style: BorderStyle.solid),
-            content: const Text(
-              "Please Enter Valid FA Number / Item Name",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16.0,
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.0,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
+        // ScaffoldMessenger.of(context).showSnackBar(
+        //   SnackBar(
+        //     backgroundColor: Colors.white,
+        //     elevation: 10.0,
+        //     shape: Border.all(
+        //         color: const Color.fromARGB(255, 192, 0, 0),
+        //         width: 0.5,
+        //         style: BorderStyle.solid),
+        //     content: const Text(
+        //       "Please Enter Valid FA Number / Item Name",
+        //       style: TextStyle(
+        //         color: Colors.black,
+        //         fontSize: 16.0,
+        //         fontStyle: FontStyle.italic,
+        //         fontWeight: FontWeight.bold,
+        //         letterSpacing: 1.0,
+        //       ),
+        //       textAlign: TextAlign.center,
+        //     ),
+        //   ),
+        // );
+        Get.snackbar(
+          "Error!",
+          "Please Enter Valid FA Number / Item Name",
+          backgroundColor: Colors.red,
         );
       }
     } catch (e) {

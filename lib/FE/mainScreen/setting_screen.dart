@@ -66,7 +66,7 @@ class SettingScreen extends StatelessWidget {
                     //     builder: (context) => const LoginPage4(),
                     //   ),
                     // );
-                    Get.to(LoginPage4());
+                    Get.to(const LoginPage4());
                   },
                   child: const Text("LOGOUT"),
                 ),

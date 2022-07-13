@@ -32,7 +32,7 @@ class _StockTableState extends State<StockTable> {
   static var serverKeyValue;
 
   late List _dataaa = <ResultData>[];
-  late final List _dataaa1 = <ResultData>[];
+  // late final List _dataaa1 = <ResultData>[];
 
   Future<String> getData(String searchVal) async {
     var searchValue = searchVal;
@@ -221,38 +221,38 @@ class _StockTableState extends State<StockTable> {
     }
   }
 
-  listData() async {
-    if (_dataaa.length != null) {
-      return ListView.builder(
-        shrinkWrap: true,
-        // itemCount: _dataaa == null ? 0 : _dataaa.length,
-        itemCount: _dataaa.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-              title: Text(_dataaa[index]['itemname']),
-              subtitle: Text(_dataaa[index]['stockid']),
-              tileColor: HexColor('#E6BF00'),
-              textColor: Colors.white,
-            ),
-          );
-        },
-      );
-    } else if (_dataaa1.length != null) {
-      return ListView.builder(
-        shrinkWrap: true,
-        itemCount: _dataaa1.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-              title: Text(_dataaa1[index]['itemname']),
-              subtitle: Text(_dataaa1[index]['stockid']),
-              tileColor: HexColor('#E6BF00'),
-              textColor: Colors.white,
-            ),
-          );
-        },
-      );
-    }
-  }
+  // listData() async {
+  //   if (_dataaa.length != null) {
+  //     return ListView.builder(
+  //       shrinkWrap: true,
+  //       // itemCount: _dataaa == null ? 0 : _dataaa.length,
+  //       itemCount: _dataaa.length,
+  //       itemBuilder: (context, index) {
+  //         return Card(
+  //           child: ListTile(
+  //             title: Text(_dataaa[index]['itemname']),
+  //             subtitle: Text(_dataaa[index]['stockid']),
+  //             tileColor: HexColor('#E6BF00'),
+  //             textColor: Colors.white,
+  //           ),
+  //         );
+  //       },
+  //     );
+  //   } else if (_dataaa1.length != null) {
+  //     return ListView.builder(
+  //       shrinkWrap: true,
+  //       itemCount: _dataaa1.length,
+  //       itemBuilder: (context, index) {
+  //         return Card(
+  //           child: ListTile(
+  //             title: Text(_dataaa1[index]['itemname']),
+  //             subtitle: Text(_dataaa1[index]['stockid']),
+  //             tileColor: HexColor('#E6BF00'),
+  //             textColor: Colors.white,
+  //           ),
+  //         );
+  //       },
+  //     );
+  //   }
+  // }
 }

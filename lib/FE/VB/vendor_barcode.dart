@@ -181,7 +181,7 @@ class _VendorBarcodeState extends State<VendorBarcode> {
                                 Get.to(ScanVb(
                                   idstock: _dataaa[index]['stockid'],
                                   itemname: _dataaa[index]['itemname'],
-                                  serverKeyVal: _dataaa[index]['itemname'],
+                                  serverKeyVal: serverKeyValue,
                                 ));
                               },
                               color: Colors.white,
