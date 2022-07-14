@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:v2rp1/FE/VB/aaa.dart';
 import 'package:v2rp1/FE/VB/vendor_barcode2.dart';
 
 class ScanVb extends StatefulWidget {

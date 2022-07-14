@@ -10,6 +10,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/BE/FAres.dart';
 import 'package:v2rp1/BE/controller.dart';
 import 'package:v2rp1/BE/reqip.dart';
+import 'package:v2rp1/FE/FA/fixasset_scanner.dart';
 import 'package:v2rp1/FE/navbar/navbar.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -158,9 +159,7 @@ class _FixAssetState extends State<FixAsset> {
                     suffixIcon: IconButton(
                       icon: const Icon(Icons.qr_code_2),
                       onPressed: () async {
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //   builder: (context) => const ScanSTable(),
-                        // ));
+                        Get.to(() => ScanFixAsset());
                       },
                       splashColor: Colors.green,
                       tooltip: 'Scan',
@@ -184,26 +183,20 @@ class _FixAssetState extends State<FixAsset> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      // const Text('Item List'),
                       const SizedBox(height: 15.0),
                       SizedBox(
                         height: size.height / 1.5,
-                        // width: size.width / 1,
                         child: ListView.separated(
                           scrollDirection: Axis.horizontal,
-                          // physics: const NeverScrollableScrollPhysics(),
                           physics: const BouncingScrollPhysics(),
                           separatorBuilder: (context, index) {
                             return const SizedBox(
-                              // height: 20,
                               width: 20,
                             );
                           },
                           shrinkWrap: true,
-                          // itemCount: 3,
                           itemCount: _dataaa.length,
                           itemBuilder: (context, index) {
-                            // _foto = _dataaa[index]['imgdir'];
                             return Card(
                               clipBehavior: Clip.antiAlias,
                               shadowColor: HexColor('#E6BF00'),

@@ -7,21 +7,21 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:v2rp1/BE/controller.dart';
+import 'package:v2rp1/FE/FA/fixasset.dart';
 
-import 'package:v2rp1/FE/StockTable/stocktable.dart';
-
-class ScanSTable extends StatefulWidget {
-  const ScanSTable({Key? key}) : super(key: key);
+class ScanFixAsset extends StatefulWidget {
+  const ScanFixAsset({Key? key}) : super(key: key);
 
   @override
-  State<ScanSTable> createState() => _ScanSTableState();
+  State<ScanFixAsset> createState() => _ScanFixAssetState();
 }
 
-class _ScanSTableState extends State<ScanSTable> {
+class _ScanFixAssetState extends State<ScanFixAsset> {
   MobileScannerController cameraController = MobileScannerController();
 
   static var codeBarcode;
   static TextControllers textControllers = Get.put(TextControllers());
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -99,10 +99,10 @@ class _ScanSTableState extends State<ScanSTable> {
               icon: const Icon(Icons.qr_code),
               backgroundColor: Colors.green,
             );
-            Get.to(() => const StockTable());
+            Get.to(() => const FixAsset());
             setState(() {
               cameraController.stop();
-              textControllers.stocktableController.value.text = codeBarcode;
+              textControllers.fixassetController.value.text = codeBarcode;
             });
           },
         ),

@@ -323,7 +323,7 @@ class HomeScreenn extends StatelessWidget {
                                           //         VendorBarcode(),
                                           //   ),
                                           // );
-                                          Get.to(VendorBarcode());
+                                          Get.to(() => VendorBarcode());
                                         },
                                       ),
                                     ),
@@ -354,7 +354,7 @@ class HomeScreenn extends StatelessWidget {
                                           //         StockTable(),
                                           //   ),
                                           // );
-                                          Get.to(StockTable());
+                                          Get.to(() => StockTable());
                                         },
                                       ),
                                     ),
@@ -384,7 +384,7 @@ class HomeScreenn extends StatelessWidget {
                                           //     builder: (context) => FixAsset(),
                                           //   ),
                                           // );
-                                          Get.to(FixAsset());
+                                          Get.to(() => FixAsset());
                                         },
                                       ),
                                     ),

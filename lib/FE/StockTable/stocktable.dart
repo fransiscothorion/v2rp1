@@ -30,9 +30,11 @@ class _StockTableState extends State<StockTable> {
   static TextControllers textControllers = Get.put(TextControllers());
   static var searchVal = textControllers.stocktableController.value.text;
   static var serverKeyValue;
+  static TextField codebar = TextField();
 
-  late List _dataaa = <ResultData>[];
+  static late List _dataaa = <ResultData>[];
   // late final List _dataaa1 = <ResultData>[];
+  // late final List _dataaa1 = widget.data;
 
   Future<String> getData(String searchVal) async {
     var searchValue = searchVal;
@@ -46,8 +48,10 @@ class _StockTableState extends State<StockTable> {
         }));
     setState(() {
       _dataaa = json.decode(sendSearch.body)['result'];
+      searchValue = '';
     });
     print(sendSearch.body);
+    // print(_dataaa);
 
     final resultData = resultDataFromMap(sendSearch.body);
     serverKeyValue = resultData.serverkey;
@@ -128,20 +132,10 @@ class _StockTableState extends State<StockTable> {
                   controller: textControllers.stocktableController.value,
                   onSubmitted: (value) {
                     searchProcess();
-                  },
-                  // controller: vendor_contler.clear(),
-                  onChanged: (value) {
-                    if (value == value) {
-                      InputDecoration(
-                          suffixIcon: IconButton(
-                        icon: const Icon(Icons.close),
-                        onPressed: () {
-                          setState(() {
-                            Get.deleteAll();
-                          });
-                        },
-                      ));
-                    }
+                    setState(() {
+                      _dataaa.clear();
+                      textControllers.stocktableController.value.clear();
+                    });
                   },
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.assignment),
@@ -176,11 +170,9 @@ class _StockTableState extends State<StockTable> {
                   children: [
                     const Text('Item List'),
                     const SizedBox(height: 15.0),
-                    // listData(),
                     ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      // itemCount: _dataaa == null ? 0 : _dataaa.length,
                       itemCount: _dataaa.length,
                       itemBuilder: (context, index) {
                         return Card(
@@ -220,39 +212,4 @@ class _StockTableState extends State<StockTable> {
       print(e);
     }
   }
-
-  // listData() async {
-  //   if (_dataaa.length != null) {
-  //     return ListView.builder(
-  //       shrinkWrap: true,
-  //       // itemCount: _dataaa == null ? 0 : _dataaa.length,
-  //       itemCount: _dataaa.length,
-  //       itemBuilder: (context, index) {
-  //         return Card(
-  //           child: ListTile(
-  //             title: Text(_dataaa[index]['itemname']),
-  //             subtitle: Text(_dataaa[index]['stockid']),
-  //             tileColor: HexColor('#E6BF00'),
-  //             textColor: Colors.white,
-  //           ),
-  //         );
-  //       },
-  //     );
-  //   } else if (_dataaa1.length != null) {
-  //     return ListView.builder(
-  //       shrinkWrap: true,
-  //       itemCount: _dataaa1.length,
-  //       itemBuilder: (context, index) {
-  //         return Card(
-  //           child: ListTile(
-  //             title: Text(_dataaa1[index]['itemname']),
-  //             subtitle: Text(_dataaa1[index]['stockid']),
-  //             tileColor: HexColor('#E6BF00'),
-  //             textColor: Colors.white,
-  //           ),
-  //         );
-  //       },
-  //     );
-  //   }
-  // }
 }

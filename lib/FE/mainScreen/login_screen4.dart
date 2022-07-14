@@ -227,7 +227,7 @@ class _LoginPage4State extends State<LoginPage4>
           // Navigator.of(context).pushReplacement(MaterialPageRoute(
           //   builder: (context) => const Navbar(),
           // ));
-          Get.to(Navbar());
+          Get.to(() => Navbar());
         } else {
           Get.snackbar(
             "Login Error",
