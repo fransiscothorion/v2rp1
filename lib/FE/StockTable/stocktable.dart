@@ -37,7 +37,7 @@ class _StockTableState extends State<StockTable> {
   // late final List _dataaa1 = widget.data;
 
   Future<String> getData(String searchVal) async {
-    var searchValue = searchVal;
+    String? searchValue = searchVal;
     var sendSearch = await http.post(Uri.https('www.v2rp.net', '/ptemp/'),
         headers: {'x-v2rp-key': '$conve'},
         body: jsonEncode({
@@ -46,9 +46,10 @@ class _StockTableState extends State<StockTable> {
           "reqid": "0002",
           "id": "$searchValue"
         }));
+    print(searchValue);
     setState(() {
       _dataaa = json.decode(sendSearch.body)['result'];
-      searchValue = '';
+      textControllers.fixassetController.value.clear();
     });
     print(sendSearch.body);
     // print(_dataaa);
@@ -134,7 +135,7 @@ class _StockTableState extends State<StockTable> {
                     searchProcess();
                     setState(() {
                       _dataaa.clear();
-                      textControllers.stocktableController.value.clear();
+                      // textControllers.stocktableController.value.clear();
                     });
                   },
                   decoration: InputDecoration(

@@ -223,11 +223,11 @@ class _LoginPage4State extends State<LoginPage4>
             icon: Icon(Icons.check),
             backgroundColor: Colors.green,
           );
-          //----------------
-          // Navigator.of(context).pushReplacement(MaterialPageRoute(
-          //   builder: (context) => const Navbar(),
-          // ));
+
           Get.to(() => Navbar());
+          setState(() {
+            textControllers.passwordController.value.clear();
+          });
         } else {
           Get.snackbar(
             "Login Error",
