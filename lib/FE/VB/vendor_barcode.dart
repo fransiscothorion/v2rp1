@@ -28,13 +28,13 @@ class _VendorBarcodeState extends State<VendorBarcode> {
   static var trxid = MsgHeader.trxid;
   static var datetime = MsgHeader.datetime;
   static TextControllers textControllers = Get.put(TextControllers());
-  static var searchVal = textControllers.vendor1Controller.value.text;
+  // static var searchVal = textControllers.vendor1Controller.value.text;
   static var serverKeyValue;
 
   late List _dataaa = <ResultData>[];
 
-  Future<String> getData(String searchVal) async {
-    var searchValue = searchVal;
+  Future<String> getData() async {
+    var searchValue = textControllers.vendor1Controller.value.text;
     var sendSearch = await http.post(Uri.https('www.v2rp.net', '/ptemp/'),
         headers: {'x-v2rp-key': '$conve'},
         body: jsonEncode({
@@ -94,10 +94,6 @@ class _VendorBarcodeState extends State<VendorBarcode> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              // Navigator.pushReplacement(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const Navbar()),
-              // );
               Get.to(Navbar());
             },
           ),
@@ -128,13 +124,21 @@ class _VendorBarcodeState extends State<VendorBarcode> {
                 ),
                 TextField(
                   controller: textControllers.vendor1Controller.value,
-                  // controller: vendor_contler.clear(),
+                  onSubmitted: (value) {
+                    searchProcess();
+                    setState(() {
+                      textControllers.vendor1Controller.value.clear();
+                    });
+                  },
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.assignment),
                     suffixIcon: IconButton(
                       icon: const Icon(Icons.search),
                       onPressed: () async {
                         searchProcess();
+                        setState(() {
+                          textControllers.vendor1Controller.value.clear();
+                        });
                       },
                       splashColor: Colors.green,
                       tooltip: 'Search',
@@ -208,7 +212,7 @@ class _VendorBarcodeState extends State<VendorBarcode> {
     var searchResult = textControllers.vendor1Controller.value.text;
     try {
       if (searchResult.length >= 3) {
-        getData(searchVal);
+        getData();
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

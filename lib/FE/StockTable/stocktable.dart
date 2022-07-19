@@ -28,7 +28,7 @@ class _StockTableState extends State<StockTable> {
   static var trxid = MsgHeader.trxid;
   static var datetime = MsgHeader.datetime;
   static TextControllers textControllers = Get.put(TextControllers());
-  static var searchVal = textControllers.stocktableController.value.text;
+  // static var searchVal = textControllers.stocktableController.value.text;
   static var serverKeyValue;
   static TextField codebar = TextField();
 
@@ -36,8 +36,8 @@ class _StockTableState extends State<StockTable> {
   // late final List _dataaa1 = <ResultData>[];
   // late final List _dataaa1 = widget.data;
 
-  Future<String> getData(String searchVal) async {
-    String? searchValue = searchVal;
+  Future<String> getData() async {
+    String? searchValue = textControllers.stocktableController.value.text;
     var sendSearch = await http.post(Uri.https('www.v2rp.net', '/ptemp/'),
         headers: {'x-v2rp-key': '$conve'},
         body: jsonEncode({
@@ -49,10 +49,12 @@ class _StockTableState extends State<StockTable> {
     print(searchValue);
     setState(() {
       _dataaa = json.decode(sendSearch.body)['result'];
-      textControllers.fixassetController.value.clear();
+      textControllers.stocktableController.value.clear();
+      searchValue = null;
     });
     print(sendSearch.body);
     // print(_dataaa);
+    print(searchValue);
 
     final resultData = resultDataFromMap(sendSearch.body);
     serverKeyValue = resultData.serverkey;
@@ -200,7 +202,7 @@ class _StockTableState extends State<StockTable> {
     var searchResult = textControllers.stocktableController.value.text;
     try {
       if (searchResult.length >= 3) {
-        getData(searchVal);
+        getData();
       } else {
         Get.snackbar(
           "Error",

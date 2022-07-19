@@ -28,7 +28,7 @@ class _FixAssetState extends State<FixAsset> {
   static var trxid = MsgHeader.trxid;
   static var datetime = MsgHeader.datetime;
   static late TextControllers textControllers = Get.put(TextControllers());
-  static var searchVal = textControllers.fixassetController.value.text;
+  // static var searchVal = textControllers.fixassetController.value.text;
   static var serverKeyValue;
 
   late List _dataaa = <FixAsset>[];
@@ -46,8 +46,8 @@ class _FixAssetState extends State<FixAsset> {
     super.dispose();
   }
 
-  Future<String> getData(String searchVal) async {
-    var searchValue = searchVal;
+  Future<String> getData() async {
+    var searchValue = textControllers.fixassetController.value.text;
     var sendSearch = await http.post(Uri.https('www.v2rp.net', '/ptemp/'),
         headers: {'x-v2rp-key': '$conve'},
         body: jsonEncode({
@@ -137,21 +137,9 @@ class _FixAssetState extends State<FixAsset> {
                   controller: textControllers.fixassetController.value,
                   onSubmitted: (value) {
                     searchProcess();
-                    Get.deleteAll();
-                  },
-                  // controller: vendor_contler.clear(),
-                  onChanged: (value) {
-                    if (value == value) {
-                      InputDecoration(
-                          suffixIcon: IconButton(
-                        icon: const Icon(Icons.close),
-                        onPressed: () {
-                          setState(() {
-                            Get.deleteAll();
-                          });
-                        },
-                      ));
-                    }
+                    setState(() {
+                      textControllers.fixassetController.value.clear();
+                    });
                   },
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.assignment),
@@ -453,29 +441,8 @@ class _FixAssetState extends State<FixAsset> {
     var searchResult = textControllers.fixassetController.value.text;
     try {
       if (searchResult.length >= 3) {
-        getData(searchVal);
+        getData();
       } else {
-        // ScaffoldMessenger.of(context).showSnackBar(
-        //   SnackBar(
-        //     backgroundColor: Colors.white,
-        //     elevation: 10.0,
-        //     shape: Border.all(
-        //         color: const Color.fromARGB(255, 192, 0, 0),
-        //         width: 0.5,
-        //         style: BorderStyle.solid),
-        //     content: const Text(
-        //       "Please Enter Valid FA Number / Item Name",
-        //       style: TextStyle(
-        //         color: Colors.black,
-        //         fontSize: 16.0,
-        //         fontStyle: FontStyle.italic,
-        //         fontWeight: FontWeight.bold,
-        //         letterSpacing: 1.0,
-        //       ),
-        //       textAlign: TextAlign.center,
-        //     ),
-        //   ),
-        // );
         Get.snackbar(
           "Error!",
           "Please Enter Valid FA Number / Item Name",
