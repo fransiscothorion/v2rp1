@@ -109,34 +109,7 @@ class _VendorBarcode2State extends State<VendorBarcode2> {
           padding: const EdgeInsets.all(24.0),
           child: TextButton(
             onPressed: () async {
-              if (responsecode == '00') {
-                updateData();
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return CustomDialogBoxVb(
-                        title: "SUBMIT DATA SUCCESFUL",
-                        descriptions: "Data Barcode Pada item " +
-                            widget.idstock2 +
-                            " Telah Berhasil Di Update",
-                        text: "Home",
-                        home: "OK",
-                        img: Image.asset("images/success.gif"),
-                      );
-                    });
-              } else {
-                Get.snackbar(
-                  'Failed!',
-                  'Gagal Update Barcode!',
-                  icon: Icon(Icons.warning),
-                  backgroundColor: Colors.red,
-                  isDismissible: true,
-                  dismissDirection: DismissDirection.horizontal,
-                );
-                setState(() {
-                  Get.to(Navbar());
-                });
-              }
+              updateData();
             },
             child: const Padding(
               padding: EdgeInsets.all(8.0),
@@ -166,5 +139,29 @@ class _VendorBarcode2State extends State<VendorBarcode2> {
     print(sendUpdate.body);
     final resultData = json.decode(sendUpdate.body);
     responsecode = resultData['responsecode'];
+    if (responsecode == '00') {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return CustomDialogBoxVb(
+              title: "SUBMIT DATA SUCCESFUL",
+              descriptions: "Data Barcode Pada item " +
+                  widget.idstock2 +
+                  " Telah Berhasil Di Update",
+              text: "Home",
+              home: "OK",
+              img: Image.asset("images/success.gif"),
+            );
+          });
+    } else {
+      Get.snackbar(
+        'Failed!',
+        'Gagal Update Barcode!',
+        icon: Icon(Icons.warning),
+        backgroundColor: Colors.red,
+        isDismissible: true,
+        dismissDirection: DismissDirection.horizontal,
+      );
+    }
   }
 }
