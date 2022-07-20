@@ -47,17 +47,37 @@ class _StockTableState extends State<StockTable> {
           "id": "$searchValue"
         }));
     print(searchValue);
-    setState(() {
-      _dataaa = json.decode(sendSearch.body)['result'];
-      textControllers.stocktableController.value.clear();
-      searchValue = null;
-    });
+    // setState(() {
+    //   _dataaa = json.decode(sendSearch.body)['result'];
+    //   textControllers.stocktableController.value.clear();
+    //   searchValue = null;
+    // });
+    final resultData = json.decode(sendSearch.body);
+    serverKeyValue = resultData['serverkey'];
+    var responsecode = resultData['responsecode'];
+    if (responsecode == '00') {
+      setState(() {
+        _dataaa = json.decode(sendSearch.body)['result'];
+        textControllers.stocktableController.value.clear();
+      });
+    } else {
+      Get.snackbar(
+        'Failed!',
+        'Data Tidak Ditemukan!',
+        icon: Icon(Icons.warning),
+        backgroundColor: Colors.red,
+        isDismissible: true,
+        dismissDirection: DismissDirection.horizontal,
+      );
+      setState(() {
+        _dataaa.clear();
+        textControllers.stocktableController.value.clear();
+      });
+    }
     print(sendSearch.body);
     // print(_dataaa);
     print(searchValue);
 
-    final resultData = resultDataFromMap(sendSearch.body);
-    serverKeyValue = resultData.serverkey;
     print(serverKeyValue);
     return "Successfull";
   }
@@ -209,6 +229,8 @@ class _StockTableState extends State<StockTable> {
           "Please Enter Valid Stock Code / Item Name",
           icon: Icon(Icons.close),
           backgroundColor: Colors.red,
+          isDismissible: true,
+          dismissDirection: DismissDirection.horizontal,
         );
       }
     } catch (e) {

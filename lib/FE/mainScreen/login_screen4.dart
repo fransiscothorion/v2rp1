@@ -215,6 +215,8 @@ class _LoginPage4State extends State<LoginPage4>
             "Please Try Again",
             icon: Icon(Icons.close),
             backgroundColor: Colors.red,
+            isDismissible: true,
+            dismissDirection: DismissDirection.horizontal,
           );
         } else if (loginResult.toString() == '{00}') {
           Get.snackbar(
@@ -222,6 +224,8 @@ class _LoginPage4State extends State<LoginPage4>
             "Login Telah Berhasil",
             icon: Icon(Icons.check),
             backgroundColor: Colors.green,
+            isDismissible: true,
+            dismissDirection: DismissDirection.horizontal,
           );
 
           Get.to(() => Navbar());
@@ -235,6 +239,8 @@ class _LoginPage4State extends State<LoginPage4>
             snackPosition: SnackPosition.BOTTOM,
             icon: Icon(Icons.close),
             backgroundColor: Colors.red,
+            isDismissible: true,
+            dismissDirection: DismissDirection.horizontal,
           );
           _timer = Timer(Duration(seconds: 1), (() {
             SystemNavigator.pop();

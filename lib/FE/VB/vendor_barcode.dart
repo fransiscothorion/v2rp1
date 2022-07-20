@@ -6,6 +6,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get/get_navigation/src/routes/default_transitions.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:v2rp1/BE/controller.dart';
 import 'package:v2rp1/BE/reqip.dart';
@@ -43,14 +44,30 @@ class _VendorBarcodeState extends State<VendorBarcode> {
           "reqid": "0002",
           "id": "$searchValue"
         }));
-    setState(() {
-      _dataaa = json.decode(sendSearch.body)['result'];
-    });
+    // final resultDataa = resultDataFromMap(sendSearch.body);
+    final resultData = json.decode(sendSearch.body);
+    serverKeyValue = resultData['serverkey'];
+    var responsecode = resultData['responsecode'];
+    if (responsecode == '00') {
+      setState(() {
+        _dataaa = json.decode(sendSearch.body)['result'];
+      });
+    } else {
+      Get.snackbar(
+        'Failed!',
+        'Data Tidak Ditemukan!',
+        icon: Icon(Icons.warning),
+        backgroundColor: Colors.red,
+        isDismissible: true,
+        dismissDirection: DismissDirection.horizontal,
+      );
+      setState(() {
+        _dataaa.clear();
+      });
+    }
+
     print(sendSearch.body);
 
-    final resultData = resultDataFromMap(sendSearch.body);
-    // print(resultData.serverkey);
-    serverKeyValue = resultData.serverkey;
     print(serverKeyValue);
     return "Successfull";
   }
@@ -58,7 +75,6 @@ class _VendorBarcodeState extends State<VendorBarcode> {
   @override
   void initState() {
     super.initState();
-    // futurePost = ResultData as Future<List<ResultData>>;
   }
 
   @override
@@ -175,13 +191,6 @@ class _VendorBarcodeState extends State<VendorBarcode> {
                             trailing: IconButton(
                               icon: const Icon(Icons.qr_code_2),
                               onPressed: () {
-                                // Navigator.of(context).push(MaterialPageRoute(
-                                //   builder: (context) => ScanVb(
-                                //     idstock: _dataaa[index]['stockid'],
-                                //     itemname: _dataaa[index]['itemname'],
-                                //     serverKeyVal: serverKeyValue,
-                                //   ),
-                                // ));
                                 Get.to(ScanVb(
                                   idstock: _dataaa[index]['stockid'],
                                   itemname: _dataaa[index]['itemname'],

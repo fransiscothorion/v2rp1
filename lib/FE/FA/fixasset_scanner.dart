@@ -98,6 +98,8 @@ class _ScanFixAssetState extends State<ScanFixAsset> {
               "$codeBarcode",
               icon: const Icon(Icons.qr_code),
               backgroundColor: Colors.green,
+              isDismissible: true,
+              dismissDirection: DismissDirection.horizontal,
             );
             Get.to(() => const FixAsset());
             setState(() {

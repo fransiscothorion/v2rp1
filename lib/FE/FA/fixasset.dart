@@ -56,14 +56,33 @@ class _FixAssetState extends State<FixAsset> {
           "reqid": "501001",
           "id": "$searchValue"
         }));
-    setState(() {
-      _dataaa = json.decode(sendSearch.body)['result'];
-      searchValue = '';
-    });
+    // final resultData = json.decode(sendSearch.body);
+    // serverKeyValue = resultData['serverkey'];
+
+    final fixAsset = json.decode(sendSearch.body);
+    serverKeyValue = fixAsset['serverkey'];
+    var responsecode = fixAsset['responsecode'];
+    if (responsecode == '00') {
+      setState(() {
+        _dataaa = json.decode(sendSearch.body)['result'];
+        textControllers.fixassetController.value.clear();
+      });
+    } else {
+      Get.snackbar(
+        'Failed!',
+        'Data Tidak Ditemukan!',
+        icon: Icon(Icons.warning),
+        backgroundColor: Colors.red,
+        isDismissible: true,
+        dismissDirection: DismissDirection.horizontal,
+      );
+      setState(() {
+        _dataaa.clear();
+        textControllers.fixassetController.value.clear();
+      });
+    }
     print(sendSearch.body);
 
-    final fixAsset = fixAssetFromMap(sendSearch.body);
-    serverKeyValue = fixAsset.serverkey;
     print(serverKeyValue);
     return "Successfull";
   }
@@ -102,10 +121,6 @@ class _FixAssetState extends State<FixAsset> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              // Navigator.pushReplacement(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const Navbar()),
-              // );
               Get.to(Navbar());
             },
           ),
@@ -447,6 +462,8 @@ class _FixAssetState extends State<FixAsset> {
           "Error!",
           "Please Enter Valid FA Number / Item Name",
           backgroundColor: Colors.red,
+          isDismissible: true,
+          dismissDirection: DismissDirection.horizontal,
         );
       }
     } catch (e) {

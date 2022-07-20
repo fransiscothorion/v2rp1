@@ -11,6 +11,7 @@ import 'package:v2rp1/BE/reqip.dart';
 import 'package:v2rp1/FE/VB/dialog_box_vb.dart';
 import 'package:v2rp1/FE/VB/vendor_barcode.dart';
 import 'package:http/http.dart' as http;
+import 'package:v2rp1/FE/navbar/navbar.dart';
 
 class VendorBarcode2 extends StatefulWidget {
   final barcodeResult;
@@ -33,6 +34,7 @@ class _VendorBarcode2State extends State<VendorBarcode2> {
   static var conve = MsgHeader.conve;
   static var trxid = MsgHeader.trxid;
   static var datetime = MsgHeader.datetime;
+  static var responsecode;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -107,21 +109,34 @@ class _VendorBarcode2State extends State<VendorBarcode2> {
           padding: const EdgeInsets.all(24.0),
           child: TextButton(
             onPressed: () async {
-              // MsgHeader.updateBarcode();
-              updateData();
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return CustomDialogBoxVb(
-                      title: "SUBMIT DATA SUCCESFUL",
-                      descriptions: "Data Barcode Pada item " +
-                          widget.idstock2 +
-                          " Telah Berhasil Di Update",
-                      text: "Home",
-                      home: "OK",
-                      img: Image.asset("images/success.gif"),
-                    );
-                  });
+              if (responsecode == '00') {
+                updateData();
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return CustomDialogBoxVb(
+                        title: "SUBMIT DATA SUCCESFUL",
+                        descriptions: "Data Barcode Pada item " +
+                            widget.idstock2 +
+                            " Telah Berhasil Di Update",
+                        text: "Home",
+                        home: "OK",
+                        img: Image.asset("images/success.gif"),
+                      );
+                    });
+              } else {
+                Get.snackbar(
+                  'Failed!',
+                  'Gagal Update Barcode!',
+                  icon: Icon(Icons.warning),
+                  backgroundColor: Colors.red,
+                  isDismissible: true,
+                  dismissDirection: DismissDirection.horizontal,
+                );
+                setState(() {
+                  Get.to(Navbar());
+                });
+              }
             },
             child: const Padding(
               padding: EdgeInsets.all(8.0),
@@ -149,5 +164,7 @@ class _VendorBarcode2State extends State<VendorBarcode2> {
           "serverkey": widget.serverKeyVal2,
         }));
     print(sendUpdate.body);
+    final resultData = json.decode(sendUpdate.body);
+    responsecode = resultData['responsecode'];
   }
 }

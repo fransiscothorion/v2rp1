@@ -316,13 +316,6 @@ class HomeScreenn extends StatelessWidget {
                                       child: InkWell(
                                         splashColor: Colors.black38,
                                         onTap: () async {
-                                          // Navigator.pushReplacement(
-                                          //   context,
-                                          //   MaterialPageRoute(
-                                          //     builder: (context) =>
-                                          //         VendorBarcode(),
-                                          //   ),
-                                          // );
                                           Get.to(() => VendorBarcode());
                                         },
                                       ),
