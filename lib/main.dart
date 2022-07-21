@@ -8,7 +8,10 @@ import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:v2rp1/FE/mainScreen/login_screen4.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

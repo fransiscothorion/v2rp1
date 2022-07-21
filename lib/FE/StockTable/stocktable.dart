@@ -157,12 +157,10 @@ class _StockTableState extends State<StockTable> {
                     searchProcess();
                     setState(() {
                       _dataaa.clear();
-                      // textControllers.stocktableController.value.clear();
                     });
                   },
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.assignment),
-                    // suffixIcon: ,
                     suffixIcon: IconButton(
                       icon: const Icon(Icons.qr_code_2),
                       onPressed: () async {

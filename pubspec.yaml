@@ -52,6 +52,7 @@ dependencies:
   html: ^0.15.0
   intl: ^0.17.0
   carousel_slider: ^4.1.1
+  image_picker: ^0.8.5+3
 
 dev_dependencies:
   flutter_test:
@@ -84,12 +85,6 @@ flutter:
   assets:
     - images/
     - images/kctgroupasli.png
-    - images/ic_it.png
-    - images/ic_gr.png
-    - images/ic_otp.png
-    - images/ic_stmovement.png
-    - images/ic_sttransfer.jpg
-    - images/success.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

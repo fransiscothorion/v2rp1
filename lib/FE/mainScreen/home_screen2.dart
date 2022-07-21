@@ -63,7 +63,7 @@ class HomeScreenn extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                height: size.height * 0.3,
+                height: size.height * 0.2,
                 decoration: BoxDecoration(
                     color: HexColor("#E6BF00"),
                     borderRadius: BorderRadius.only(
@@ -73,9 +73,11 @@ class HomeScreenn extends StatelessWidget {
               ),
               Positioned(
                 child: Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
-                  height: size.height * 0.50,
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 100,
+                  ),
+                  height: size.height * 0.80,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: const BorderRadius.all(
@@ -120,14 +122,7 @@ class HomeScreenn extends StatelessWidget {
                                     child: InkWell(
                                       splashColor: Colors.black38,
                                       onTap: () async {
-                                        // Navigator.pushReplacement(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //     builder: (context) =>
-                                        //         GoodsReceive(),
-                                        //   ),
                                         Get.to(GoodsReceive());
-                                        // );
                                       },
                                     ),
                                   ),
@@ -142,20 +137,13 @@ class HomeScreenn extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20),
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
                                   child: Ink.image(
-                                    image:
-                                        AssetImage('images/kctgroupasli.png'),
+                                    image: AssetImage('images/ic_mu.png'),
                                     height: 80,
                                     width: 80,
                                     fit: BoxFit.fill,
                                     child: InkWell(
                                       splashColor: Colors.black38,
                                       onTap: () async {
-                                        // Navigator.pushReplacement(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //     builder: (context) => ScanWh(),
-                                        //   ),
-                                        // );
                                         Get.to(ScanWh());
                                       },
                                     ),
@@ -178,13 +166,6 @@ class HomeScreenn extends StatelessWidget {
                                     child: InkWell(
                                       splashColor: Colors.black38,
                                       onTap: () async {
-                                        // Navigator.pushReplacement(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //     builder: (context) =>
-                                        //         InternalTransfer(),
-                                        //   ),
-                                        // );
                                         Get.to(InternalTransfer());
                                       },
                                     ),
@@ -209,21 +190,13 @@ class HomeScreenn extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20),
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
                                   child: Ink.image(
-                                    image:
-                                        AssetImage('images/ic_stmovement.png'),
+                                    image: AssetImage('images/ic_sm.png'),
                                     height: 80,
                                     width: 80,
                                     fit: BoxFit.fill,
                                     child: InkWell(
                                       splashColor: Colors.black38,
                                       onTap: () async {
-                                        // Navigator.pushReplacement(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //     builder: (context) =>
-                                        //         StockMovement(),
-                                        //   ),
-                                        // );
                                         Get.to(StockMovement());
                                       },
                                     ),
@@ -239,21 +212,13 @@ class HomeScreenn extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20),
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
                                   child: Ink.image(
-                                    image:
-                                        AssetImage('images/ic_stmovement.png'),
+                                    image: AssetImage('images/ic_st.png'),
                                     height: 80,
                                     width: 80,
                                     fit: BoxFit.fill,
                                     child: InkWell(
                                       splashColor: Colors.black38,
                                       onTap: () async {
-                                        // Navigator.pushReplacement(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //     builder: (context) =>
-                                        //         StockTransfer(),
-                                        //   ),
-                                        // );
                                         Get.to(StockTransfer());
                                       },
                                     ),
@@ -269,20 +234,13 @@ class HomeScreenn extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20),
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
                                   child: Ink.image(
-                                    image: AssetImage('images/ic_otp.png'),
+                                    image: AssetImage('images/ic_st.png'),
                                     height: 80,
                                     width: 80,
                                     fit: BoxFit.fill,
                                     child: InkWell(
                                       splashColor: Colors.black38,
                                       onTap: () async {
-                                        // Navigator.pushReplacement(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //     // builder: (context) => OtpScreen2(),
-                                        //     builder: (context) => StockOpname(),
-                                        //   ),
-                                        // );
                                         Get.to(StockOpname());
                                       },
                                     ),
@@ -332,21 +290,13 @@ class HomeScreenn extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20),
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
                                     child: Ink.image(
-                                      image:
-                                          AssetImage('images/stocktable.png'),
+                                      image: AssetImage('images/ic_st.png'),
                                       height: 80,
                                       width: 80,
                                       fit: BoxFit.fill,
                                       child: InkWell(
                                         splashColor: Colors.black38,
                                         onTap: () async {
-                                          // Navigator.pushReplacement(
-                                          //   context,
-                                          //   MaterialPageRoute(
-                                          //     builder: (context) =>
-                                          //         StockTable(),
-                                          //   ),
-                                          // );
                                           Get.to(() => StockTable());
                                         },
                                       ),
@@ -371,12 +321,6 @@ class HomeScreenn extends StatelessWidget {
                                       child: InkWell(
                                         splashColor: Colors.black38,
                                         onTap: () async {
-                                          // Navigator.pushReplacement(
-                                          //   context,
-                                          //   MaterialPageRoute(
-                                          //     builder: (context) => FixAsset(),
-                                          //   ),
-                                          // );
                                           Get.to(() => FixAsset());
                                         },
                                       ),
