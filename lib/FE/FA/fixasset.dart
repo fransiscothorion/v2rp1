@@ -1,13 +1,14 @@
 // ignore_for_file: avoid_print, unused_field, unrelated_type_equality_checks, unnecessary_new, prefer_typing_uninitialized_variables, unnecessary_string_interpolations, unnecessary_null_comparison, prefer_const_constructors
 
 import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:v2rp1/BE/FAres.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:v2rp1/BE/controller.dart';
 import 'package:v2rp1/BE/reqip.dart';
 import 'package:v2rp1/FE/FA/fixasset_scanner.dart';
@@ -28,8 +29,8 @@ class _FixAssetState extends State<FixAsset> {
   static var trxid = MsgHeader.trxid;
   static var datetime = MsgHeader.datetime;
   static late TextControllers textControllers = Get.put(TextControllers());
-  // static var searchVal = textControllers.fixassetController.value.text;
   static var serverKeyValue;
+  late File image;
 
   late List _dataaa = <FixAsset>[];
   late final List _dataaa1 = <FixAsset>[];
@@ -121,7 +122,7 @@ class _FixAssetState extends State<FixAsset> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Get.to(Navbar());
+              Get.to(() => Navbar());
             },
           ),
         ),
@@ -188,13 +189,13 @@ class _FixAssetState extends State<FixAsset> {
                     children: [
                       const SizedBox(height: 15.0),
                       SizedBox(
-                        height: size.height / 1.5,
+                        height: size.height * 0.80,
                         child: ListView.separated(
                           scrollDirection: Axis.horizontal,
                           physics: const BouncingScrollPhysics(),
                           separatorBuilder: (context, index) {
-                            return const SizedBox(
-                              width: 20,
+                            return SizedBox(
+                              width: size.width * 0.10,
                             );
                           },
                           shrinkWrap: true,
@@ -212,14 +213,17 @@ class _FixAssetState extends State<FixAsset> {
                                 children: [
                                   Stack(
                                     children: [
-                                      Ink.image(
-                                        image: NetworkImage(
-                                          'https://v2rp.net/' +
-                                              _dataaa[index]['imagedir'],
+                                      InkWell(
+                                        onLongPress: dialogImage,
+                                        child: Ink.image(
+                                          image: NetworkImage(
+                                            'https://v2rp.net/' +
+                                                _dataaa[index]['imagedir'],
+                                          ),
+                                          height: 300,
+                                          width: 350,
+                                          fit: BoxFit.cover,
                                         ),
-                                        height: 300,
-                                        width: 350,
-                                        fit: BoxFit.cover,
                                       ),
                                       Positioned(
                                         bottom: 0,
@@ -444,12 +448,93 @@ class _FixAssetState extends State<FixAsset> {
                         ),
                       )
                     ]),
+                SizedBox(
+                  height: 20,
+                ),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  dialogImage() {
+    Get.defaultDialog(
+      title: "Upload Foto Fixed Assets",
+      middleText: "Please Click Below",
+      backgroundColor: HexColor('#E6BF00'),
+      confirm: ElevatedButton(
+        onPressed: () {
+          chooseImage();
+        },
+        child: Text('Choose Image'),
+      ),
+      cancel: ElevatedButton(
+        onPressed: () {
+          takeImage();
+        },
+        child: Text('Take Picture'),
+      ),
+    );
+  }
+
+  Future<void> chooseImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+
+      final imageTemporary = File(image.path);
+      setState(() => this.image = imageTemporary);
+      if (image != null) {
+        print("sukses memilih gambar");
+      } else {
+        print("tidak ada gambar yang dipilih");
+      }
+      uploadImage();
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+    // setState(() {
+    //   uploadImage = choosedImage as File;
+    // });
+  }
+
+  Future<void> takeImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.camera);
+      if (image == null) return;
+
+      final imageTemporary = File(image.path);
+      setState(() => this.image = imageTemporary);
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+    // setState(() {
+    //   uploadImage = choosedImage as File;
+    // });
+  }
+
+  Future<void> uploadImage() async {
+    if (image != null) {
+      print(image);
+      try {
+        var response = await http.post(
+            Uri.https('www.v2rp.net', '/codebase/php/uploadfmmobile.php'),
+            headers: {'x-v2rp-key': conve},
+            body: jsonEncode({
+              "id": "FA/PNEP/000044",
+              // "id": "$_dataaa['itemname']",
+              "images": "$image",
+            }));
+        var hasil = json.decode(response.body);
+        print(hasil);
+      } catch (e) {
+        print("Error");
+      }
+    } else {
+      print("No selected image");
+    }
   }
 
   Future<void> searchProcess() async {
